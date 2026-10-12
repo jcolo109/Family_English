@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* Sistema visual de docs/pantallas-v1.md */
+@theme {
+  --font-display: "Bricolage Grotesque", "Nunito Sans", system-ui, sans-serif;
+  --font-sans: "Nunito Sans", system-ui, sans-serif;
+
+  --color-fondo: #f5f6fa;
+  --color-tinta: #161b33;
+  --color-tinta-2: #5a6178;
+  --color-tinta-3: #3d4460;
+
+  --color-acento: #2f5bd3;
+  --color-acento-oscuro: #1e3f9e;
+  --color-acento-suave: #e6edfc;
+  --color-acento-fondo: #eef2fd;
+
+  --color-borde: #d5dae6;
+  --color-borde-suave: #e3e6ee;
+  --color-separador: #eceef4;
+  --color-chip: #f0f2f8;
+  --color-deshabilitado: #dde1ea;
+
+  --color-aviso: #ffb547;
+  --color-aviso-fondo: #fff4e5;
+  --color-aviso-borde: #ffd7a1;
+  --color-aviso-texto: #a34a0f;
+  --color-aviso-tinta: #4a3a20;
+
+  --color-ok: #1f8a55;
+  --color-ok-fondo: #e3f4ea;
+  --color-ok-texto: #165c3a;
+
+  --color-error-fondo: #fbedea;
+  --color-error-texto: #a3321f;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+}

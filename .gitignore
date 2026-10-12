@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.local
+supabase/.temp/
+.vercel/
+.DS_Store
+Thumbs.db
