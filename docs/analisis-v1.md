@@ -193,6 +193,8 @@ Como las 5 palabras del día son las mismas para todo el grupo y cada palabra se
 
 La aplicación se organiza en torno a una pantalla de inicio diaria con tres acciones: estudiar, examinarse y ver la clasificación. Las pantallas del organizador cuelgan de los ajustes del grupo.
 
+Las 14 pantallas están diseñadas como maquetas interactivas de móvil. El detalle de cada una, el sistema visual y el mapa de navegación están en [pantallas-v1.md](pantallas-v1.md); el código fuente del diseño se guarda en [pantallas/diseno/](pantallas/diseno/).
+
 | Pantalla | Quién la usa | Contenido principal |
 | --- | --- | --- |
 | Acceso | Todos | Inicio de sesión, registro, recuperar contraseña |

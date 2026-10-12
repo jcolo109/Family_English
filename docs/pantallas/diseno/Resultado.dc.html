@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Resultado del examen</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2F5BD3}a:hover{color:#1E3F9E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; background: #F5F6FA; color: #161B33; font-family: 'Nunito Sans', system-ui, sans-serif">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 18px; padding: 44px 20px 28px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<span style="font-size: 14px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: #5A6178">Examen del 12 de octubre</span>
+<div role="img" aria-label="8 aciertos de 10" style="width: 168px; height: 168px; border-radius: 84px; background: conic-gradient({{accent}} 0 80%, #E3E6EE 80% 100%); display: flex; align-items: center; justify-content: center">
+<div style="width: 136px; height: 136px; border-radius: 68px; background: #F5F6FA; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 50px; line-height: 1">8<span style="font-size: 26px; color: #5A6178">/10</span></span>
+<span style="font-size: 14px; font-weight: 700; color: #5A6178">aciertos</span>
+</div>
+</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px">¡Muy bien, Jose!</h1>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 14px; border-radius: 16px; background: #FFFFFF">
+<span style="font-size: 13px; font-weight: 700; color: #5A6178">Puntos de hoy</span>
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px; color: #165C3A">+8</span>
+<span style="font-size: 13px; color: #5A6178">Total: 274</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 14px; border-radius: 16px; background: #FFFFFF">
+<span style="font-size: 13px; font-weight: 700; color: #5A6178">Posición</span>
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px">2º</span>
+<span style="font-size: 13px; color: #5A6178">a 7 puntos de Lucía</span>
+</div>
+</div>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: #5A6178">Tus fallos</h2>
+<div style="display: flex; flex-direction: column; border-radius: 16px; background: #FFFFFF; overflow: hidden">
+<div style="display: flex; gap: 12px; padding: 14px; border-bottom: 1px solid #ECEEF4">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C2412D" stroke-width="2.4" stroke-linecap="round" style="flex-shrink: 0; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="M9 9l6 6M15 9l-6 6"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; font-weight: 800">to borrow → tomar prestado</span>
+<span style="font-size: 14px; color: #5A6178">Elegiste «prestar»</span>
+</div>
+</div>
+<div style="display: flex; gap: 12px; padding: 14px">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C2412D" stroke-width="2.4" stroke-linecap="round" style="flex-shrink: 0; margin-top: 2px"><circle cx="12" cy="12" r="9"></circle><path d="M9 9l6 6M15 9l-6 6"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; font-weight: 800">cupboard → armario</span>
+<span style="font-size: 14px; color: #5A6178">Elegiste «cocina» · palabra de repaso</span>
+</div>
+</div>
+</div>
+</section>
+<div style="flex: 1"></div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<a href="Clasificacion.dc.html" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-weight: 800; font-size: 17px; text-decoration: none">Ver clasificación</a>
+<a href="InicioGrupo.dc.html" style="display: flex; align-items: center; justify-content: center; height: 50px; border-radius: 16px; background: #FFFFFF; color: #161B33; font-weight: 800; font-size: 16px; text-decoration: none">Volver al inicio</a>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2F5BD3","options":["#2F5BD3","#0F7A6C","#6B3FC7","#B5402A"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#2F5BD3' };
+}
+}
+</script>
+</body>
+</html>

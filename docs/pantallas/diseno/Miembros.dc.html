@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Miembros del grupo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2F5BD3}a:hover{color:#1E3F9E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; background: #F5F6FA; color: #161B33; font-family: 'Nunito Sans', system-ui, sans-serif">
+<header style="display: flex; flex-direction: column; gap: 6px; padding: 30px 16px 0">
+<div style="display: flex; align-items: center; gap: 4px">
+<a href="InicioGrupo.dc.html" aria-label="Volver al grupo" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 22px; color: #161B33; margin-left: -8px">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+</a>
+<div style="display: flex; flex-direction: column">
+<span style="font-size: 13px; font-weight: 700; color: #5A6178">Ajustes · Familia Colomar</span>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px">Miembros</h1>
+</div>
+</div>
+<nav aria-label="Ajustes del grupo" style="display: flex; gap: 20px; border-bottom: 1px solid #E3E6EE; padding: 0 4px">
+<a href="Vocabulario.dc.html" style="min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 700; color: #5A6178; text-decoration: none; border-bottom: 3px solid transparent">Vocabulario</a>
+<a href="Miembros.dc.html" aria-current="page" style="min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 800; color: #161B33; text-decoration: none; border-bottom: 3px solid {{accent}}">Miembros</a>
+<a href="Invitar.dc.html" style="min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 700; color: #5A6178; text-decoration: none; border-bottom: 3px solid transparent">Invitaciones</a>
+</nav>
+</header>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 14px 16px 24px; overflow: hidden">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 0 4px">
+<span style="font-size: 14px; font-weight: 700; color: #5A6178">6 miembros · 1 invitación pendiente</span>
+<a href="Invitar.dc.html" style="min-height: 44px; display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 800; text-decoration: none; color: {{accent}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Invitar</a>
+</div>
+<div style="display: flex; flex-direction: column; border-radius: 16px; background: #FFFFFF; overflow: hidden">
+<sc-for list="{{members}}" as="m" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; border-bottom: 1px solid #ECEEF4">
+<div style="display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 6px 8px 6px 14px">
+<div aria-hidden="true" style="{{m.avatar}}">{{m.initial}}</div>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 800">{{m.name}}<sc-if value="{{m.org}}" hint-placeholder-val="{{ false }}"><span style="padding: 1px 7px; border-radius: 5px; background: #E6EDFC; color: #1E3F9E; font-size: 11px; font-weight: 800">Organizador</span></sc-if></span>
+<span style="font-size: 13px; color: #5A6178">Desde el {{m.since}} · {{m.pts}} pts</span>
+</div>
+<sc-if value="{{m.canExpel}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{m.ask}}" style="min-height: 40px; padding: 0 12px; border: 1.5px solid #EBC7BF; border-radius: 10px; background: #FFFFFF; color: #A3321F; font-family: inherit; font-size: 13px; font-weight: 800; cursor: pointer">Expulsar</button>
+</sc-if>
+</div>
+<sc-if value="{{m.confirming}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; margin: 0 10px 12px; padding: 12px; border-radius: 12px; background: #FBEDEA">
+<span style="font-size: 14px; line-height: 1.4; color: #5C1E12">¿Expulsar a <strong>{{m.name}}</strong>? Dejará de ver el grupo y saldrá de la clasificación.</span>
+<div style="display: flex; gap: 8px">
+<button type="button" onClick="{{cancel}}" style="flex: 1; height: 44px; border: none; border-radius: 10px; background: #FFFFFF; color: #161B33; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Cancelar</button>
+<button type="button" onClick="{{cancel}}" style="flex: 1; height: 44px; border: none; border-radius: 10px; background: #B5402A; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 800; cursor: pointer">Sí, expulsar</button>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+<div style="flex: 1"></div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 14px; border-radius: 16px; background: #FFFFFF">
+<span style="font-size: 15px; font-weight: 800">Zona horaria del grupo</span>
+<span style="font-size: 14px; color: #5A6178">Europa/Madrid · reparto diario a las 00:00</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2F5BD3","options":["#2F5BD3","#0F7A6C","#6B3FC7","#B5402A"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var s = this.state || {};
+var av = 'width: 40px; height: 40px; flex-shrink: 0; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; ';
+var data = [
+['Jose (tú)', 'J', '#FFD9A8', '#6B3A00', '7 sep', '274', true],
+['Lucía', 'L', '#CDEBE3', '#0B4F45', '7 sep', '281', false],
+['Marta', 'M', '#E5DAF7', '#3E2275', '7 sep', '259', false],
+['Pablo', 'P', '#D7E4FA', '#1E3F9E', '8 sep', '240', false],
+['Carmen', 'C', '#F7D9DE', '#7A1F33', '12 sep', '198', false],
+['Andrés', 'A', '#E2E6EE', '#2A3045', '30 sep', '86', false]
+];
+return {
+accent: this.props.accent ?? '#2F5BD3',
+cancel: function () { self.setState({ ask: null }); },
+members: data.map(function (d, i) {
+return {
+name: d[0], initial: d[1], since: d[4], pts: d[5], org: d[6],
+avatar: av + 'background: ' + d[2] + '; color: ' + d[3],
+canExpel: !d[6],
+confirming: s.ask === i,
+ask: function () { self.setState({ ask: i }); }
+};
+})
+};
+}
+}
+</script>
+</body>
+</html>

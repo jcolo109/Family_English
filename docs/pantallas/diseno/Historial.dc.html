@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mi historial</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2F5BD3}a:hover{color:#1E3F9E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; background: #F5F6FA; color: #161B33; font-family: 'Nunito Sans', system-ui, sans-serif">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 14px; padding: 36px 16px 12px; overflow: hidden">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 0 4px">
+<span style="font-size: 14px; font-weight: 700; color: #5A6178">Familia Colomar · desde el 7 sep</span>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px">Mi historial</h1>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 12px; border-radius: 16px; background: #FFFFFF">
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 24px">274</span>
+<span style="font-size: 13px; font-weight: 700; color: #5A6178">puntos</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 12px; border-radius: 16px; background: #FFFFFF">
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 24px">34<span style="font-size: 15px; color: #5A6178">/35</span></span>
+<span style="font-size: 13px; font-weight: 700; color: #5A6178">exámenes</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 12px; border-radius: 16px; background: #FFFFFF">
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 24px">175</span>
+<span style="font-size: 13px; font-weight: 700; color: #5A6178">palabras vistas</span>
+</div>
+</div>
+<section style="display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: 18px; background: #FFFFFF">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<h2 style="margin: 0; font-size: 16px; font-weight: 800">Puntos por día</h2>
+<span style="font-size: 13px; color: #5A6178">Últimos 14 días · media 8,1</span>
+</div>
+<div role="img" aria-label="{{chartLabel}}" style="display: flex; align-items: flex-end; gap: 6px; height: 130px; padding-top: 8px; border-bottom: 1.5px solid #D5DAE6; position: relative">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 8px; border-top: 1px dashed #E3E6EE"></div>
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="14">
+<div aria-hidden="true" style="flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px">
+<span style="font-size: 11px; font-weight: 800; color: #3D4460">{{b.label}}</span>
+<div style="{{b.style}}"></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 12px; color: #5A6178; font-weight: 600">
+<span>29 sep</span><span>Hoy</span>
+</div>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5A6178"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 2px; border: 1.5px dashed #A3321F"></span>3 oct: sin examen, 0 puntos</span>
+</section>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 0 4px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: #5A6178">Las que más fallas</h2>
+<a href="Repaso.dc.html" style="min-height: 44px; display: flex; align-items: center; font-size: 14px; font-weight: 800; text-decoration: none; color: {{accent}}">Repasarlas</a>
+</div>
+<div style="display: flex; flex-direction: column; border-radius: 16px; background: #FFFFFF; overflow: hidden; margin-top: -6px">
+<sc-for list="{{fails}}" as="f" hint-placeholder-count="4">
+<div style="display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; border-bottom: 1px solid #ECEEF4">
+<span style="flex: 1; font-size: 15px"><strong>{{f.en}}</strong> <span style="color: #5A6178">· {{f.es}}</span></span>
+<span style="font-size: 13px; font-weight: 800; color: #A3321F">{{f.n}} fallos</span>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+<nav aria-label="Navegación principal" style="display: flex; padding: 6px 6px 18px; background: #FFFFFF; border-top: 1px solid #E3E6EE">
+<a href="InicioGrupo.dc.html" style="flex: 1; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; text-decoration: none; color: #5A6178; font-size: 12px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"></path></svg>Inicio</a>
+<a href="PalabrasDelDia.dc.html" style="flex: 1; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; text-decoration: none; color: #5A6178; font-size: 12px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="15" rx="2"></rect><path d="M8 3h11a2 2 0 0 1 2 2v12"></path></svg>Palabras</a>
+<a href="Clasificacion.dc.html" style="flex: 1; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; text-decoration: none; color: #5A6178; font-size: 12px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-8h5v8M9.5 21V4h5v17M15 21v-5h5v5"></path></svg>Ranking</a>
+<a href="Historial.dc.html" aria-current="page" style="flex: 1; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; text-decoration: none; color: {{accent}}; font-size: 12px; font-weight: 800"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m7 15 4-4 3 3 5-6"></path></svg>Historial</a>
+<a href="Perfil.dc.html" style="flex: 1; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; text-decoration: none; color: #5A6178; font-size: 12px; font-weight: 700"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Perfil</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2F5BD3","options":["#2F5BD3","#0F7A6C","#6B3FC7","#B5402A"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var accent = this.props.accent ?? '#2F5BD3';
+var pts = [9, 8, 10, 7, 9, 0, 9, 8, 9, 10, 6, 8, 9, 8];
+return {
+accent: accent,
+chartLabel: 'Puntos de los últimos 14 días: ' + pts.join(', '),
+bars: pts.map(function (p, i) {
+var last = i === pts.length - 1;
+var style = p === 0
+? 'align-self: stretch; height: 6px; border-radius: 3px; border: 1.5px dashed #A3321F; box-sizing: border-box'
+: 'align-self: stretch; border-radius: 4px 4px 0 0; height: ' + (p * 9) + 'px; background: ' + (last ? accent : '#B9C8EE');
+return { label: String(p), style: style };
+}),
+fails: [
+{ en: 'to borrow', es: 'tomar prestado', n: 3 },
+{ en: 'cupboard', es: 'armario', n: 2 },
+{ en: 'to wonder', es: 'preguntarse', n: 2 },
+{ en: 'besides', es: 'además', n: 1 }
+]
+};
+}
+}
+</script>
+</body>
+</html>

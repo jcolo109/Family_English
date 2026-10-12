@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Palabras del día</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2F5BD3}a:hover{color:#1E3F9E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; background: #F5F6FA; color: #161B33; font-family: 'Nunito Sans', system-ui, sans-serif">
+<header style="display: flex; align-items: center; gap: 8px; padding: 32px 12px 8px">
+<a href="InicioGrupo.dc.html" aria-label="Volver al inicio" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 24px; color: #161B33">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+</a>
+<div style="flex: 1; display: flex; flex-direction: column">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px">Palabras del día</h1>
+<span style="font-size: 13px; color: #5A6178; font-weight: 600">12 oct · las mismas para todo el grupo</span>
+</div>
+<a href="Repaso.dc.html" style="min-height: 44px; padding: 0 10px; display: flex; align-items: center; font-size: 14px; font-weight: 800; text-decoration: none; color: {{accent}}">Repaso</a>
+</header>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 18px; padding: 8px 20px 28px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<div style="display: flex; gap: 6px">
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="5">
+<span aria-hidden="true" style="{{d.style}}"></span>
+</sc-for>
+</div>
+<span style="font-size: 14px; font-weight: 700; color: #5A6178">{{counter}} · {{known}} sabidas</span>
+</div>
+<button type="button" onClick="{{flip}}" aria-label="Voltear tarjeta" style="{{cardStyle}}">
+<span style="align-self: flex-start; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.3px; {{tagStyle}}">{{side}} · {{word.cat}}</span>
+<sc-if value="{{front}}" hint-placeholder-val="{{ true }}">
+<span style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px">
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 46px; line-height: 1.05">{{word.en}}</span>
+<span style="font-size: 15px; color: #5A6178; font-weight: 600">Piensa la traducción y toca para comprobar</span>
+</span>
+</sc-if>
+<sc-if value="{{back}}" hint-placeholder-val="{{ false }}">
+<span style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 16px">
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 42px; line-height: 1.05">{{word.es}}</span>
+<span style="font-size: 16px; font-weight: 700; opacity: 0.85">{{word.en}}</span>
+<span style="padding: 14px; border-radius: 14px; background: rgba(255,255,255,0.16); font-size: 16px; line-height: 1.45; font-style: italic">“{{word.ex}}”</span>
+</span>
+</sc-if>
+<span style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700; {{hintStyle}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path></svg>Toca para voltear</span>
+</button>
+<div style="display: flex; gap: 10px">
+<button type="button" onClick="{{again}}" style="flex: 1; height: 54px; border: 1.5px solid #D5DAE6; border-radius: 14px; background: #FFFFFF; color: #161B33; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer">Repasar otra vez</button>
+<button type="button" onClick="{{gotIt}}" style="flex: 1; height: 54px; border: none; border-radius: 14px; background: #1F8A55; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer">Me la sé</button>
+</div>
+<a href="Examen.dc.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; border-radius: 14px; background: #161B33; color: #FFFFFF; font-weight: 800; font-size: 16px; text-decoration: none">Ir al examen<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2F5BD3","options":["#2F5BD3","#0F7A6C","#6B3FC7","#B5402A"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var accent = this.props.accent ?? '#2F5BD3';
+var s = this.state || {};
+var words = [
+{ en: 'brave', es: 'valiente', ex: 'It was brave of her to speak first.', cat: 'Adjetivos' },
+{ en: 'to borrow', es: 'tomar prestado', ex: 'Can I borrow your pen?', cat: 'Verbos' },
+{ en: 'kettle', es: 'hervidor', ex: 'Put the kettle on, please.', cat: 'Casa' },
+{ en: 'neighbour', es: 'vecino', ex: 'Our neighbour has a big dog.', cat: 'Personas' },
+{ en: 'although', es: 'aunque', ex: 'Although it was cold, we went out.', cat: 'Conectores' }
+];
+var i = s.i || 0;
+var flipped = !!s.flipped;
+var knownMap = s.knownMap || {};
+var known = Object.keys(knownMap).filter(function (k) { return knownMap[k]; }).length;
+var next = function () { self.setState({ i: (i + 1) % words.length, flipped: false }); };
+var card = 'flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px; border-radius: 28px; text-align: left; font-family: inherit; cursor: pointer; ';
+card += flipped ? 'border: none; background: ' + accent + '; color: #FFFFFF; box-shadow: 0 12px 32px rgba(22,27,51,0.18)' : 'border: 1.5px solid #E3E6EE; background: #FFFFFF; color: #161B33; box-shadow: 0 12px 32px rgba(22,27,51,0.08)';
+return {
+accent: accent,
+word: words[i],
+front: !flipped,
+back: flipped,
+side: flipped ? 'ESPAÑOL' : 'INGLÉS',
+cardStyle: card,
+tagStyle: flipped ? 'background: rgba(255,255,255,0.2); color: #FFFFFF' : 'background: #E6EDFC; color: #1E3F9E',
+hintStyle: flipped ? 'color: #FFFFFF' : 'color: #5A6178',
+counter: (i + 1) + ' de ' + words.length,
+known: known,
+dots: words.map(function (w, j) {
+var c = j === i ? accent : (knownMap[j] ? '#1F8A55' : '#D5DAE6');
+return { style: 'height: 8px; border-radius: 4px; background: ' + c + '; width: ' + (j === i ? '28px' : '8px') };
+}),
+flip: function () { self.setState({ flipped: !flipped }); },
+again: next,
+gotIt: function () { var m = Object.assign({}, knownMap); m[i] = true; self.setState({ knownMap: m, i: (i + 1) % words.length, flipped: false }); }
+};
+}
+}
+</script>
+</body>
+</html>
