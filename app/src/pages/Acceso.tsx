@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../lib/auth'
 import { Aviso, Boton, Campo, Logo, Pantalla } from '../components/ui'
+import { destinoTrasAcceso } from './Invitacion'
 
 type Modo = 'login' | 'register' | 'recover'
 
@@ -17,7 +18,7 @@ export default function Acceso() {
   const [aviso, setAviso] = useState<string | null>(null)
   const [enviando, setEnviando] = useState(false)
 
-  if (!cargando && session) return <Navigate to="/grupos" replace />
+  if (!cargando && session) return <Navigate to={destinoTrasAcceso()} replace />
 
   function cambiarModo(nuevo: Modo) {
     setModo(nuevo)
@@ -34,7 +35,7 @@ export default function Acceso() {
       if (modo === 'login') {
         const { error } = await supabase.auth.signInWithPassword({ email, password })
         if (error) throw error
-        navigate('/grupos', { replace: true })
+        navigate(destinoTrasAcceso(), { replace: true })
       } else if (modo === 'register') {
         const { data, error } = await supabase.auth.signUp({
           email,
@@ -42,7 +43,7 @@ export default function Acceso() {
           options: { data: { nombre_visible: nombre.trim() } },
         })
         if (error) throw error
-        if (data.session) navigate('/grupos', { replace: true })
+        if (data.session) navigate(destinoTrasAcceso(), { replace: true })
         else setAviso('Cuenta creada. Revisa tu email para confirmarla y después inicia sesión.')
       } else {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {

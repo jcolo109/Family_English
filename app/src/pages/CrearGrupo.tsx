@@ -29,7 +29,7 @@ export default function CrearGrupo() {
     evento.preventDefault()
     setError(null)
     setEnviando(true)
-    const { error } = await supabase.rpc('crear_grupo', {
+    const { data, error } = await supabase.rpc('crear_grupo', {
       p_nombre: nombre.trim(),
       p_descripcion: descripcion.trim() || null,
       p_zona_horaria: zona,
@@ -39,7 +39,7 @@ export default function CrearGrupo() {
       setError(error.message)
       return
     }
-    navigate('/grupos', { replace: true })
+    navigate(`/g/${data as string}/invitar?nuevo=1`, { replace: true })
   }
 
   return (
@@ -94,7 +94,7 @@ export default function CrearGrupo() {
 
         <div className="flex-1" />
         <Boton type="submit" disabled={enviando || nombre.trim().length === 0}>
-          {enviando ? 'Creando…' : 'Crear grupo'}
+          {enviando ? 'Creando…' : 'Crear y seguir con invitaciones'}
         </Boton>
       </form>
     </Pantalla>

@@ -132,7 +132,11 @@ export default function MisGrupos() {
           {miembros.map((m) => {
             const pos = posiciones[m.grupo_id]
             return (
-              <div key={m.id} className="flex flex-col gap-3.5 rounded-[18px] bg-white p-4 shadow-[0_1px_2px_rgba(22,27,51,0.06),0_4px_16px_rgba(22,27,51,0.05)]">
+              <Link
+                key={m.id}
+                to={`/g/${m.grupo_id}`}
+                className="flex flex-col gap-3.5 rounded-[18px] bg-white p-4 text-tinta no-underline shadow-[0_1px_2px_rgba(22,27,51,0.06),0_4px_16px_rgba(22,27,51,0.05)]"
+              >
                 <div className="flex items-center gap-3">
                   <div aria-hidden="true" className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] bg-acento font-display text-lg font-extrabold text-white">
                     {iniciales(m.grupo?.nombre ?? '')}
@@ -151,7 +155,7 @@ export default function MisGrupos() {
                 <div className="flex items-center justify-between border-t border-separador pt-3 text-sm">
                   <span className="text-tinta-2">{m.puntos_totales} puntos</span>
                 </div>
-              </div>
+              </Link>
             )
           })}
         </section>

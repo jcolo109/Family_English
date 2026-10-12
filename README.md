@@ -20,8 +20,9 @@ Aplicación para aprender vocabulario en inglés jugando en grupo: un organizado
 1. Crea un proyecto en [supabase.com](https://supabase.com) (región Europa Occidental si los usuarios están en España).
 2. En **SQL Editor**, ejecuta el contenido de `supabase/migrations/0001_esquema.sql`.
 3. En **Database > Extensions**, activa `pg_cron`. Después ejecuta `supabase/migrations/0002_reparto_programado.sql`.
-4. En **Authentication > URL Configuration**, añade la URL de Vercel y `http://localhost:5173` a *Redirect URLs* (necesario para el enlace de recuperación de contraseña).
-5. Opcional para desarrollo: en **Authentication > Providers > Email**, desactiva *Confirm email* para entrar sin confirmar el correo.
+4. Ejecuta `supabase/migrations/0003_vocabulario_y_reparto.sql` (alta de palabras y reparto bajo demanda). Las migraciones se aplican en orden y cada una una sola vez.
+5. En **Authentication > URL Configuration**, añade la URL de Vercel y `http://localhost:5173` a *Redirect URLs* (necesario para el enlace de recuperación de contraseña).
+6. Opcional para desarrollo: en **Authentication > Providers > Email**, desactiva *Confirm email* para entrar sin confirmar el correo. Supabase rechaza emails de dominios ficticios (`example.com`, `.test`), así que las cuentas de prueba necesitan un buzón real; los alias del tipo `nombre+prueba1@gmail.com` sirven.
 
 ### 2. Frontend en local
 
@@ -43,6 +44,8 @@ La aplicación queda en `http://localhost:5173`.
 
 ## Estado
 
-Implementado: acceso (inicio de sesión, registro, recuperación de contraseña), lista de grupos con aceptación de invitaciones y creación de grupo. El esquema de base de datos cubre todo el MVP, incluido el reparto diario de palabras.
+Implementado: acceso (inicio de sesión, registro, recuperación de contraseña), mis grupos con aceptación de invitaciones, crear grupo, invitar (con enlace de invitación copiable), inicio del grupo con reparto diario, palabras del día (tarjetas) y vocabulario del organizador (alta, edición, archivo e importación CSV). El esquema de base de datos cubre todo el MVP.
 
-Pendiente: invitaciones por email, inicio del grupo, palabras del día, examen con corrección en servidor, resultado, clasificación, repaso, historial, vocabulario, miembros y perfil.
+Pendiente: envío de invitaciones por email, examen con corrección en servidor, resultado, clasificación completa, repaso, historial, miembros y perfil. Las rutas existen como marcadores para que la navegación funcione.
+
+Rutas: `/` acceso · `/grupos` mis grupos · `/grupos/nuevo` · `/invitacion/:token` · `/g/:id` inicio del grupo · `/g/:id/palabras` · `/g/:id/vocabulario` · `/g/:id/invitar` · `/g/:id/miembros` · `/g/:id/examen` · `/g/:id/resultado` · `/g/:id/ranking` · `/g/:id/repaso` · `/g/:id/historial` · `/perfil`.
